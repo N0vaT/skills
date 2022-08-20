@@ -1,9 +1,6 @@
 package com.nova.skills.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +18,20 @@ public class Programmer {
     @Column(name="programmer_name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name="programmer_id")
     private List<Language> languageList = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "programmer_id")
+    private List<Skill> skillList = new ArrayList<>();
 
 
     public void addLanguage(Language language){
         this.languageList.add(language);
+    }
+
+    public void addSkill(Skill skill){
+        this.skillList.add(skill);
     }
 }

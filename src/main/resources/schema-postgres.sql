@@ -25,8 +25,10 @@ CREATE TABLE sk_skill
     skill_id serial,
     skill_title varchar(40) not null,
     skill_description varchar(100),
+    programmer_id int,
     language_id int,
     PRIMARY KEY (skill_id),
+    FOREIGN KEY (programmer_id) REFERENCES sk_programmer(programmer_id),
     FOREIGN KEY (language_id) REFERENCES sk_language(language_id)
 );
 
