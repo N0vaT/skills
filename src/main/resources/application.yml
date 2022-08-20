@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/taco_cloud
+    url: jdbc:postgresql://localhost:5432/skill_app
     username: postgres
     password: 1111
     driver-class-name: org.postgresql.Driver

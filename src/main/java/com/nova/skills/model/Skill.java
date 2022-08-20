@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "skill")
+@Table(name = "sk_skill")
 public class Skill {
 
     @Id

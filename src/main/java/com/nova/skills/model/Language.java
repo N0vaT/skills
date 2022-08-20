@@ -5,13 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "language")
+@Table(name = "sk_language")
 public class Language {
 
     @Id
@@ -19,13 +18,18 @@ public class Language {
     @Column(name = "language_id")
     private Long languageId;
 
-    @Column(name = "Language_title")
+    @Column(name = "language_title")
     private String title;
 
-    @Column(name = "Language description")
+    @Column(name = "language_description")
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name="skill_id")
-    private List<Skill> skillList;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name="language_id")
+    private List<Skill> skillList = new ArrayList<>();
+
+    public void addSkill(Skill skill){
+        this.skillList.add(skill);
+    }
+
 }
