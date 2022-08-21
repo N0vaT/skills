@@ -10,5 +10,8 @@ spring:
     hibernate:
       hbm2ddl:
         auto: none
+  thymeleaf:
+    prefix: file:src/main/resources/templates/
+    cache: false
 server:
   port: 8080
